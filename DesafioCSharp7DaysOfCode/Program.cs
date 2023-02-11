@@ -30,7 +30,6 @@ namespace DesafioCSharp7DaysOfCode
 
             return response;
         }
-
         public static List<MainPokemon> CarregaMainPokemons()
         {
             RestResponse response = ComunicaAPIPokemons();
@@ -42,7 +41,6 @@ namespace DesafioCSharp7DaysOfCode
 
             return listaMainPokemon.ToList();
         }
-
         public static List<Pokemon> CarregaListaPokemons()
         {
             List<MainPokemon> mainPokemons = CarregaMainPokemons();
@@ -52,7 +50,6 @@ namespace DesafioCSharp7DaysOfCode
 
             return listaPokemon.ToList(); ;
         }
-
         private static void CarregaResultPokemons(List<MainPokemon> mainPokemons, List<Pokemon> listaPokemon)
         {
             foreach (var mainPokemon in mainPokemons)
@@ -64,7 +61,6 @@ namespace DesafioCSharp7DaysOfCode
 
             }
         }
-
         public static void ListaDadosPokemon()
         {
             foreach (var item in CarregaMainPokemons())
