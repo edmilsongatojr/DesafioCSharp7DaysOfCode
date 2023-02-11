@@ -26,7 +26,6 @@ namespace DesafioCSharp7DaysOfCode
            
             RestResponse response = ComunicaAPIPokemons("?offset=20&limit=20");
 
-
             MainPokemon mainPokemonJsonList = JsonConvert.DeserializeObject<MainPokemon>(response.Content);
 
             List<MainPokemon> listaMainPokemon = new List<MainPokemon>() { mainPokemonJsonList };
