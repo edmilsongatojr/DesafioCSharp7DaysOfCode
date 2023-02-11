@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +14,6 @@ namespace DesafioCSharp7DaysOfCode.Models
         public string Next { get; set; }
         public string Previous { get; set; }
         public Pokemon[] Results { get; set; }
+        
     }
 }

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace DesafioCSharp7DaysOfCode
 {
-    public class Program
+    public class Program : PokemonService
     {
         static void Main(string[] args)
         {
@@ -21,18 +21,10 @@ namespace DesafioCSharp7DaysOfCode
             Console.ReadKey();
         }
 
-        private static RestResponse ComunicaAPIPokemons()
-        {
-            string urlApi = "https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20";
-            var client = new RestClient(urlApi);
-            var request = new RestRequest();
-            var response = client.ExecuteGet(request);
-
-            return response;
-        }
         public static List<MainPokemon> CarregaMainPokemons()
         {
-            RestResponse response = ComunicaAPIPokemons();
+           
+            RestResponse response = ComunicaAPIPokemons("?offset=20&limit=20");
 
 
             MainPokemon mainPokemonJsonList = JsonConvert.DeserializeObject<MainPokemon>(response.Content);

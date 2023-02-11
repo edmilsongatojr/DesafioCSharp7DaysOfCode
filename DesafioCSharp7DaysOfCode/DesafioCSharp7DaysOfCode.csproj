@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Models\MainPokemon.cs" />
     <Compile Include="Models\Pokemon.cs" />
+    <Compile Include="PokemonService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
