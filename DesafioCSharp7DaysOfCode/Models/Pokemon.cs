@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DesafioCSharp7DaysOfCode.Models
 {
-    internal class Pokemon
+    public class Pokemon
     {
-        public string name { get; set; }
-        public string url { get; set; }
+        public string Name { get; set; }
+        public string Url { get; set; }
     }
 }
