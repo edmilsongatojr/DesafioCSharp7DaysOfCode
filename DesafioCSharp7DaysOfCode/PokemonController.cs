@@ -34,7 +34,7 @@ namespace DesafioCSharp7DaysOfCode
             for (int i = 0; i < (int)EnumConfig.Limit; i++)
             {
                 RestResponse response = CarregaIdPokemon();
-                if (!response.IsSuccessful)
+                if (!response.IsSuccessful || response == null)
                 {
                     continue;
                 }
@@ -72,11 +72,10 @@ namespace DesafioCSharp7DaysOfCode
         {
             foreach (var mainPokemon in mainPokemons)
             {
-                for (int i = 0; i < mainPokemon.Results.Length; i++)
+                foreach (var result in mainPokemon.Results)
                 {
-                    listaPokemon.Add(mainPokemon.Results[i]);
+                    listaPokemon.Add(result);
                 }
-
             }
         }
 

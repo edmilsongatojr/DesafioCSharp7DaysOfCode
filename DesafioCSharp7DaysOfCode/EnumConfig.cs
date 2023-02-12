@@ -8,7 +8,7 @@ namespace DesafioCSharp7DaysOfCode
 {
     public enum EnumConfig
     {
-        Offset = 1000,
-        Limit = 10,
+        Offset = 20,
+        Limit = 5,
     }
 }

@@ -13,41 +13,12 @@ using System.Threading.Tasks;
 
 namespace DesafioCSharp7DaysOfCode
 {
-    public class Program : PokemonService
+    partial class Program
     {
         static void Main(string[] args)
         {
-            ListaDadosPokemon();
-            Console.ReadKey();
+                ListaDadosPokemon();
+                Console.ReadKey();
         }
-
-
-        public static void ListaDadosPokemon()
-        {
-            foreach (var item in PokemonController.CarregaMainPokemons((int)EnumConfig.Offset, (int)EnumConfig.Limit))
-            {
-                Console.WriteLine($"Contagem Total da Lista de Pokemons: {item.Count}");
-                Console.WriteLine($"Contagem de Pokemons para Mascotes Disponiveis: {PokemonController.TrataIndiceEndPointPokemon()}");
-                Console.WriteLine("Retorno Pokemons:");
-                foreach (var pokemon in PokemonController.CarregaDadosPokemon())
-                {
-                    Console.WriteLine($"    Nome: {pokemon.Name}");
-                    Console.WriteLine($"        ID: {pokemon.Id}");
-                    Console.WriteLine($"        Altura: {pokemon.Height}");
-                    Console.WriteLine($"        Peso: {pokemon.Weight}");
-                    Console.WriteLine($"        Habilidades:");
-
-                    int countHabilidade = 1;
-                    foreach (var habilidade in pokemon.Abilities)
-                    {
-                        Console.WriteLine($"            Habilidade {countHabilidade}: {habilidade.Ability.Name}");
-                        countHabilidade++;
-                    }
-                }
-                Console.WriteLine("");
-            }
-
-        }
-
     }
 }
