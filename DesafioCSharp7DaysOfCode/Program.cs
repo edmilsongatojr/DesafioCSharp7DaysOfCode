@@ -21,55 +21,33 @@ namespace DesafioCSharp7DaysOfCode
             Console.ReadKey();
         }
 
-        public static List<MainPokemon> CarregaMainPokemons()
-        {
-           
-            RestResponse response = ComunicaAPIPokemons("?offset=20&limit=20");
 
-            MainPokemon mainPokemonJsonList = JsonConvert.DeserializeObject<MainPokemon>(response.Content);
-
-            List<MainPokemon> listaMainPokemon = new List<MainPokemon>() { mainPokemonJsonList };
-
-            return listaMainPokemon.ToList();
-        }
-        public static List<Pokemon> CarregaListaPokemons()
-        {
-            List<MainPokemon> mainPokemons = CarregaMainPokemons();
-            List<Pokemon> listaPokemon = new List<Pokemon>();
-
-            CarregaResultPokemons(mainPokemons, listaPokemon);
-
-            return listaPokemon.ToList(); ;
-        }
-        private static void CarregaResultPokemons(List<MainPokemon> mainPokemons, List<Pokemon> listaPokemon)
-        {
-            foreach (var mainPokemon in mainPokemons)
-            {
-                for (int i = 0; i < mainPokemon.Results.Length; i++)
-                {
-                    listaPokemon.Add(mainPokemon.Results[i]);
-                }
-
-            }
-        }
         public static void ListaDadosPokemon()
         {
-            foreach (var item in CarregaMainPokemons())
+            foreach (var item in PokemonController.CarregaMainPokemons((int)EnumConfig.Offset, (int)EnumConfig.Limit))
             {
-                Console.WriteLine(item.Count);
-                Console.WriteLine(item.Previous);
-                Console.WriteLine(item.Next);
-                Console.WriteLine("Results Pokemons:");
-                foreach (var pokemon in CarregaListaPokemons())
+                Console.WriteLine($"Contagem Total da Lista de Pokemons: {item.Count}");
+                Console.WriteLine($"Contagem de Pokemons para Mascotes Disponiveis: {PokemonController.TrataIndiceEndPointPokemon()}");
+                Console.WriteLine("Retorno Pokemons:");
+                foreach (var pokemon in PokemonController.CarregaDadosPokemon())
                 {
-                    Console.WriteLine($"      Nome: {pokemon.Name}");
-                    Console.WriteLine($"      Url: {pokemon.Url}");
+                    Console.WriteLine($"    Nome: {pokemon.Name}");
+                    Console.WriteLine($"        ID: {pokemon.Id}");
+                    Console.WriteLine($"        Altura: {pokemon.Height}");
+                    Console.WriteLine($"        Peso: {pokemon.Weight}");
+                    Console.WriteLine($"        Habilidades:");
+
+                    int countHabilidade = 1;
+                    foreach (var habilidade in pokemon.Abilities)
+                    {
+                        Console.WriteLine($"            Habilidade {countHabilidade}: {habilidade.Ability.Name}");
+                        countHabilidade++;
+                    }
                 }
                 Console.WriteLine("");
             }
 
         }
-
 
     }
 }

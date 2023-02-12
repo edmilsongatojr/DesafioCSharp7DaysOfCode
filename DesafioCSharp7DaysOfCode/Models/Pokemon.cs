@@ -10,5 +10,8 @@ namespace DesafioCSharp7DaysOfCode.Models
     {
         public string Name { get; set; }
         public string Url { get; set; }
+        public Habilidade Abilities { get; set; }
+
     }
 }
+

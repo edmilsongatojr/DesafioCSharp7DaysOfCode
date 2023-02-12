@@ -80,8 +80,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\HabilidadesPokemon.cs" />
+    <Compile Include="Models\Habilidade.cs" />
+    <Compile Include="Models\DadosPokemon.cs" />
+    <Compile Include="EnumConfig.cs" />
     <Compile Include="Models\MainPokemon.cs" />
     <Compile Include="Models\Pokemon.cs" />
+    <Compile Include="PokemonController.cs" />
     <Compile Include="PokemonService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
