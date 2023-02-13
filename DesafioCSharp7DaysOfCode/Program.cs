@@ -1,7 +1,6 @@
-﻿
-using System;
+﻿using System;
 
-namespace DesafioCSharp7DaysOfCode
+namespace DesafioCSharp7DaysOfCode.Views
 {
     partial class Program
     {

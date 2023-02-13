@@ -1,10 +1,8 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using DesafioCSharp7DaysOfCode.Services;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesafioCSharp7DaysOfCode.Models
 {
@@ -39,7 +37,7 @@ namespace DesafioCSharp7DaysOfCode.Models
         private void CarregaListaPokemons()
         {
             
-            List<DadosPokemon> listDadosMascote = PokemonController.CarregaDadosPokemon();
+            List<DadosPokemon> listDadosMascote = PokemonService.CarregaDadosPokemon();
             DadosMascote = listDadosMascote;
             
         }

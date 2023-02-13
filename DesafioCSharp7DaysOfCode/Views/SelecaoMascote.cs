@@ -1,4 +1,5 @@
 ﻿using DesafioCSharp7DaysOfCode.Models;
+using DesafioCSharp7DaysOfCode.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace DesafioCSharp7DaysOfCode
+namespace DesafioCSharp7DaysOfCode.Views
 {
     partial class Program
     {
@@ -17,8 +18,15 @@ namespace DesafioCSharp7DaysOfCode
             Console.WriteLine($"|[==================[ SELECAO DE MASCOTE ]==================]|{GeraConteudo('_', 55)}\n");
             Console.WriteLine($"{Jogador.Nome}! Escolha seu mascote:");
             int itemCount = 1;
+            string especieMascote, nomeMascote;
+            List<string> listaEspecieMascote = CarregaNaTelaListaPokemons(ref itemCount);
+            ValidaOpcaoSelecaoMascote(listaEspecieMascote, out especieMascote, out nomeMascote);
+            ValidaSelecaoTelaSelecaoMascote(nomeMascote, especieMascote);
+        }
+        private static List<string> CarregaNaTelaListaPokemons(ref int itemCount)
+        {
             List<string> listaEspecieMascote = new List<string>();
-            foreach (var pokemon in PokemonController.ListaPokemonsDisponiveis())
+            foreach (var pokemon in PokemonService.ListaPokemonsDisponiveis())
             {
                 string opcaoEspecie = $" {itemCount} - {pokemon.Name}";
                 Console.WriteLine(opcaoEspecie);
@@ -26,9 +34,7 @@ namespace DesafioCSharp7DaysOfCode
                 itemCount++;
             }
             Console.Write("| Selecione a opção o Mascote: ");
-            string especieMascote, nomeMascote;
-            ValidaOpcaoSelecaoMascote(listaEspecieMascote, out especieMascote, out nomeMascote);
-            ValidaSelecaoTelaSelecaoMascote(nomeMascote, especieMascote);
+            return listaEspecieMascote;
         }
         private static void ValidaOpcaoSelecaoMascote(List<string> listaEspecieMascote, out string especieMascote, out string nomeMascote)
         {
@@ -46,7 +52,7 @@ namespace DesafioCSharp7DaysOfCode
             if (regex.IsMatch(opcao))
             {
 
-                if (!string.IsNullOrEmpty(opcao) && Convert.ToInt32(opcao) <= PokemonController.ListaPokemonsDisponiveis().Count && regex.IsMatch(opcao))
+                if (!string.IsNullOrEmpty(opcao) && Convert.ToInt32(opcao) <= PokemonService.ListaPokemonsDisponiveis().Count && regex.IsMatch(opcao))
                 {
                     Console.WriteLine($"| Ótima Escolha! O {especieMascote} é um excelente mascote!!!!");
                     Console.WriteLine("| Agora precisamos de um Nome para ele! Que nome deseja colocar?");

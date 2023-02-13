@@ -1,13 +1,13 @@
-﻿using DesafioCSharp7DaysOfCode.Models;
-using Newtonsoft.Json;
-using RestSharp;
+﻿using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using static System.Net.WebRequestMethods;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace DesafioCSharp7DaysOfCode
+namespace DesafioCSharp7DaysOfCode.Connections
 {
-    public class PokemonService
+    public class PokemonsConnections
     {
         private static string urlapi = "https://pokeapi.co/api/v2/pokemon/";
         public static string UrlApi { get => urlapi; set => urlapi = value; }
@@ -27,7 +27,5 @@ namespace DesafioCSharp7DaysOfCode
         {
             return $"{UrlApi}{endpoint}";
         }
-        
-
     }
 }

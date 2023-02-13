@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesafioCSharp7DaysOfCode
+namespace DesafioCSharp7DaysOfCode.Views
 {
     partial class Program
     {
@@ -12,7 +12,6 @@ namespace DesafioCSharp7DaysOfCode
         {
             return new String(stringTexto, quantidadeRepeticao).ToString();
         }
-
         public static void SairDoJogo()
         {
             Console.WriteLine("Saindo do jogo Tamaggtchi...");

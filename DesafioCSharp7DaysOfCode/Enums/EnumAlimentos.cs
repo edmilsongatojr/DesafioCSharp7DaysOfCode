@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesafioCSharp7DaysOfCode.Models
+namespace DesafioCSharp7DaysOfCode.Enums
 {
     public enum EnumAlimentos
     {

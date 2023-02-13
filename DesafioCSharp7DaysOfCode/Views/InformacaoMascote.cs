@@ -1,22 +1,19 @@
-﻿using DesafioCSharp7DaysOfCode.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
-namespace DesafioCSharp7DaysOfCode
+namespace DesafioCSharp7DaysOfCode.Views
 {
     partial class Program
     {
         public static void InformacaoesMascoteAdotado()
         {
             Banner();
-            //Mascote mascote = new Mascote();
-            //mascote = mascote.CarregarDadosMascote();
-
             Console.WriteLine($"Nome do Mascote: {mascote.Nome}");
+            CarregaNaTelaDadosMascote();
+            Console.WriteLine("");
 
+        }
+        private static void CarregaNaTelaDadosMascote()
+        {
             foreach (var pokemon in mascote.DadosMascote)
             {
                 Console.WriteLine($"    Especie: {pokemon.Name.ToUpper()}");
@@ -43,8 +40,6 @@ namespace DesafioCSharp7DaysOfCode
                     countHabilidade++;
                 }
             }
-            Console.WriteLine("");
-
         }
     }
 }

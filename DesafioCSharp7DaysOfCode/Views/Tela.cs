@@ -1,18 +1,16 @@
 ﻿using DesafioCSharp7DaysOfCode.Models;
+using DesafioCSharp7DaysOfCode.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
-namespace DesafioCSharp7DaysOfCode
+namespace DesafioCSharp7DaysOfCode.Views
 {
     partial class Program
     {
         private static List<MainPokemon> mainPokemons { get; set; }
         public static void Inicializa()
         {
-            mainPokemons = PokemonController.CarregaMainPokemons((int)EnumConfig.Offset, (int)EnumConfig.Limit);
+            mainPokemons = PokemonService.CarregaMainPokemons((int)EnumConfig.Offset, (int)EnumConfig.Limit);
             Banner();
             PerguntaNomeJogador();
             MenuPrincipal();
@@ -70,7 +68,6 @@ namespace DesafioCSharp7DaysOfCode
                 switch (opcao)
                 {
                     case "1":
-                        
                         SelecaoMascote();
                         break;
                     case "2":

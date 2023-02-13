@@ -1,21 +1,24 @@
-﻿using DesafioCSharp7DaysOfCode.Models;
+﻿using DesafioCSharp7DaysOfCode.Connections;
+using DesafioCSharp7DaysOfCode.Models;
 using Newtonsoft.Json;
 using RestSharp;
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using static System.Net.WebRequestMethods;
 
-namespace DesafioCSharp7DaysOfCode
+namespace DesafioCSharp7DaysOfCode.Services
 {
-    public class PokemonController
+    public class PokemonService
     {
+
         public static int Offset => (int)EnumConfig.Offset;
         public static int Limit => (int)EnumConfig.Limit;
         public static int CountIndice { get; set; }
 
         public static List<MainPokemon> CarregaMainPokemons(int offset, int limit)
         {
-            RestResponse response = PokemonService.ComunicaAPIPokemons($"?offset={offset}&limit={limit}");
+            RestResponse response = PokemonsConnections.ComunicaAPIPokemons($"?offset={offset}&limit={limit}");
             MainPokemon mainPokemonJsonList = JsonConvert.DeserializeObject<MainPokemon>(response.Content);
             List<MainPokemon> listaMainPokemon = new List<MainPokemon>() { mainPokemonJsonList };
             return listaMainPokemon;
@@ -56,7 +59,7 @@ namespace DesafioCSharp7DaysOfCode
             {
                 indice += Offset + CountIndice;
                 CountIndice++;
-                return PokemonService.ComunicaAPIPokemons(indice.ToString());
+                return PokemonsConnections.ComunicaAPIPokemons(indice.ToString());
             }
             return null;
         }
@@ -81,7 +84,7 @@ namespace DesafioCSharp7DaysOfCode
         }
         public static List<Pokemon> ListaPokemonsDisponiveis()
         {
-            return PokemonController.CarregaResultPokemons(PokemonController.CarregaMainPokemons((int)EnumConfig.Offset, (int)EnumConfig.Limit), PokemonController.CarregaListaPokemons());
+            return CarregaResultPokemons(CarregaMainPokemons((int)EnumConfig.Offset, (int)EnumConfig.Limit), CarregaListaPokemons());
         }
 
     }

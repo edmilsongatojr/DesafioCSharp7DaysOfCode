@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-
-public class HabilidadesPokemon
+﻿namespace DesafioCSharp7DaysOfCode.Models
 {
-    public Habilidade Ability { get; set; }
-    public bool Is_hidden { get; set; }
+    public class HabilidadesPokemon
+    {
+        public Habilidade Ability { get; set; }
+        public bool Is_hidden { get; set; }
 
+    }
 }

@@ -1,5 +1,8 @@
-﻿public class Habilidade
+﻿namespace DesafioCSharp7DaysOfCode.Models
 {
-    public string Name { get; set; }
-    public string Url { get; set; }
+    public class Habilidade
+    {
+        public string Name { get; set; }
+        public string Url { get; set; }
+    }
 }

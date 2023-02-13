@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesafioCSharp7DaysOfCode.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,19 +15,18 @@ namespace DesafioCSharp7DaysOfCode.Models
         public List<string> Alimentacao { get; set; }
         public int Idade { get; private set; }
         public int StatusSaude { get; set; }
+
         public DadosPokemon()
         {
             ObterSaude();
             ObterAlimentação();
         }
-
         public List<string> ObterAlimentação()
         {
             List<string> alimentacao = GerarAlimentacao();
             Alimentacao = alimentacao; ;
             return Alimentacao.ToList();
         }
-
         private static List<string> GerarAlimentacao()
         {
             List<string> alimentacao = new List<string>();
@@ -46,7 +46,6 @@ namespace DesafioCSharp7DaysOfCode.Models
 
             return alimentacao;
         }
-
         public int ObterSaude()
         {
             Random random = new Random();

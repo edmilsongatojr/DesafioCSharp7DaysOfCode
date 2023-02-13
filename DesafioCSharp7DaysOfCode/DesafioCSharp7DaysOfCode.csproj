@@ -80,28 +80,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EnumAlimentos.cs" />
-    <Compile Include="Front\InformacaoMascote.cs" />
-    <Compile Include="Front\SelecaoMascote.cs" />
-    <Compile Include="Front\Tela.cs" />
-    <Compile Include="Front\UtilTela.cs" />
+    <Compile Include="Connections\PokemonsConnections.cs" />
+    <Compile Include="Enums\EnumAlimentos.cs" />
+    <Compile Include="Views\InformacaoMascote.cs" />
+    <Compile Include="Views\SelecaoMascote.cs" />
+    <Compile Include="Views\Tela.cs" />
+    <Compile Include="Views\UtilTela.cs" />
     <Compile Include="Models\HabilidadesPokemon.cs" />
     <Compile Include="Models\Habilidade.cs" />
     <Compile Include="Models\DadosPokemon.cs" />
-    <Compile Include="EnumConfig.cs" />
+    <Compile Include="Enums\EnumConfig.cs" />
     <Compile Include="Models\Jogador.cs" />
     <Compile Include="Models\MainPokemon.cs" />
     <Compile Include="Models\Mascote.cs" />
     <Compile Include="Models\Pokemon.cs" />
-    <Compile Include="PokemonController.cs" />
-    <Compile Include="PokemonService.cs" />
+    <Compile Include="Controllers\PokemonController.cs" />
+    <Compile Include="Services\PokemonService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="EnumUtil.cs" />
+    <Compile Include="Enums\EnumUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
