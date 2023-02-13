@@ -81,11 +81,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EnumAlimentos.cs" />
+    <Compile Include="Front\InformacaoMascote.cs" />
+    <Compile Include="Front\SelecaoMascote.cs" />
     <Compile Include="Front\Tela.cs" />
+    <Compile Include="Front\UtilTela.cs" />
     <Compile Include="Models\HabilidadesPokemon.cs" />
     <Compile Include="Models\Habilidade.cs" />
     <Compile Include="Models\DadosPokemon.cs" />
     <Compile Include="EnumConfig.cs" />
+    <Compile Include="Models\Jogador.cs" />
     <Compile Include="Models\MainPokemon.cs" />
     <Compile Include="Models\Mascote.cs" />
     <Compile Include="Models\Pokemon.cs" />

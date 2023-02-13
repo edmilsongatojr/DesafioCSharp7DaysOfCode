@@ -9,6 +9,6 @@ namespace DesafioCSharp7DaysOfCode
     public enum EnumConfig
     {
         Offset = 20,
-        Limit = 5,
+        Limit = 3,
     }
 }

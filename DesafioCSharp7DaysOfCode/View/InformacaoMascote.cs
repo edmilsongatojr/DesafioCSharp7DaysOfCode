@@ -1,25 +1,20 @@
 ﻿using DesafioCSharp7DaysOfCode.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DesafioCSharp7DaysOfCode
 {
     partial class Program
     {
-        private static List<MainPokemon> mainPokemons { get; set; }
-        public static void Inicializa()
+        public static void InformacaoesMascoteAdotado()
         {
-            mainPokemons = PokemonController.CarregaMainPokemons((int)EnumConfig.Offset, (int)EnumConfig.Limit);
-        }
+            Banner();
+            //Mascote mascote = new Mascote();
+            //mascote = mascote.CarregarDadosMascote();
 
-        public static void TelaInicial()
-        {
-
-        }
-
-        public static void ListaDadosPokemon()
-        {
-            Mascote mascote = new Mascote("João Teles Abacadabra", "ekans");
             Console.WriteLine($"Nome do Mascote: {mascote.Nome}");
 
             foreach (var pokemon in mascote.DadosMascote)

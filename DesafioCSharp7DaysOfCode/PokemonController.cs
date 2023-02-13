@@ -68,7 +68,7 @@ namespace DesafioCSharp7DaysOfCode
             else if (Offset > Limit) indice = Limit;
             return indice;
         }
-        private static void CarregaResultPokemons(List<MainPokemon> mainPokemons, List<Pokemon> listaPokemon)
+        public static List<Pokemon> CarregaResultPokemons(List<MainPokemon> mainPokemons, List<Pokemon> listaPokemon)
         {
             foreach (var mainPokemon in mainPokemons)
             {
@@ -77,8 +77,12 @@ namespace DesafioCSharp7DaysOfCode
                     listaPokemon.Add(result);
                 }
             }
+            return listaPokemon;
         }
-
+        public static List<Pokemon> ListaPokemonsDisponiveis()
+        {
+            return PokemonController.CarregaResultPokemons(PokemonController.CarregaMainPokemons((int)EnumConfig.Offset, (int)EnumConfig.Limit), PokemonController.CarregaListaPokemons());
+        }
 
     }
 }
