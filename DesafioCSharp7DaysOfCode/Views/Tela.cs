@@ -55,6 +55,7 @@ namespace DesafioCSharp7DaysOfCode.Views
         }
         private static void MenuPrincipal()
         {
+            Banner();
             Console.WriteLine($"|[==================[ MENU PRINCIPAL ]==================]|{GeraConteudo('_', 62)}\n");
             Console.WriteLine($"Olá {Jogador.Nome}! Vamos Brincar?");
             int countOpcao = 1;

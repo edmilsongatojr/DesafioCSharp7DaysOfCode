@@ -54,15 +54,7 @@ namespace DesafioCSharp7DaysOfCode.Views
                         mascoteController.MedicarMascote();
                         break;
                     case "4":
-                        Console.WriteLine($"| O {mascote.Nome} está Dor....RonczZ!");
-                        Thread.Sleep(1000);
-                        Console.Write($"| z");
-                        Thread.Sleep(1000);
-                        Console.Write($"...zZ");
-                        Thread.Sleep(1000);
-                        Console.Write($"...Roonc");
-                        Thread.Sleep(1000);
-                        Console.WriteLine($"| O {mascote.Nome} diz: {mascote.Nome}...{mascote.Nome}...{mascote.Nome.ToUpper()}");
+                       
                         mascoteController.NinarMascote();
                         break;
                     case "0":

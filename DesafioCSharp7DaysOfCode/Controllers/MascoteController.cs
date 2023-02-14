@@ -32,7 +32,7 @@ namespace DesafioCSharp7DaysOfCode.Controllers
         }
         internal void AlimentarMascote()
         {
-            
+
         }
         internal void NinarMascote()
         {
@@ -41,7 +41,19 @@ namespace DesafioCSharp7DaysOfCode.Controllers
                 Console.WriteLine($"| O {Mascote.Nome} não tem sono! Ele quer consquistar o mundoo :) GrrahhH");
 
             }
-            else Mascote.StatusEnergia = 100;
+            else
+            {
+                Console.WriteLine($"| O {Mascote.Nome} está Dor....RonczZ!");
+                Thread.Sleep(1000);
+                Console.Write($"| z");
+                Thread.Sleep(1000);
+                Console.Write($"...zZ");
+                Thread.Sleep(1000);
+                Console.Write($"...Roonc");
+                Thread.Sleep(1000);
+                Console.WriteLine($"| O {Mascote.Nome} diz: {Mascote.Nome}...{Mascote.Nome}...{Mascote.Nome.ToUpper()}");
+                Mascote.StatusEnergia = 100;
+            }
         }
         internal void MedicarMascote()
         {
