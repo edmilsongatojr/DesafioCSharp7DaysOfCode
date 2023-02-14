@@ -83,6 +83,7 @@
     <Compile Include="Connections\PokemonsConnections.cs" />
     <Compile Include="Enums\EnumAlimentos.cs" />
     <Compile Include="Views\InformacaoMascote.cs" />
+    <Compile Include="Views\InteracaoMascote.cs" />
     <Compile Include="Views\SelecaoMascote.cs" />
     <Compile Include="Views\Tela.cs" />
     <Compile Include="Views\UtilTela.cs" />
@@ -94,7 +95,7 @@
     <Compile Include="Models\MainPokemon.cs" />
     <Compile Include="Models\Mascote.cs" />
     <Compile Include="Models\Pokemon.cs" />
-    <Compile Include="Controllers\PokemonController.cs" />
+    <Compile Include="Controllers\MascoteController.cs" />
     <Compile Include="Services\PokemonService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -12,6 +12,14 @@ namespace DesafioCSharp7DaysOfCode.Views
         {
             return new String(stringTexto, quantidadeRepeticao).ToString();
         }
+        private static string TrataOpcaoMenuInicial(bool interacao, string opcao)
+        {
+            if (interacao)
+            {
+                opcao = (Convert.ToInt32(opcao) + 1).ToString();
+            }
+            return opcao;
+        }
         public static void SairDoJogo()
         {
             Console.WriteLine("Saindo do jogo Tamaggtchi...");

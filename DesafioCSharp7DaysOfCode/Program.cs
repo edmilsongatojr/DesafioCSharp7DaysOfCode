@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesafioCSharp7DaysOfCode.Models;
+using System;
 
 namespace DesafioCSharp7DaysOfCode.Views
 {

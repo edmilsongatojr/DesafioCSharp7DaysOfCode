@@ -11,7 +11,6 @@ namespace DesafioCSharp7DaysOfCode.Views
 {
     partial class Program
     {
-        static Mascote mascote = new Mascote();
         public static void SelecaoMascote()
         {
             Banner();
@@ -80,12 +79,12 @@ namespace DesafioCSharp7DaysOfCode.Views
                     validaOpcao = false;
                     mascote = new Mascote(nomeMascote, especieMascote.ToLower());
                     mascote.SalvarDadosMascote();
+                    mascote.CarregarDadosMascote();
                     Console.WriteLine("| Informações Salvas com Sucesso!");
                     Console.WriteLine("| Iremos Retornar ao Menu Principal :) Pressione qualquer tecla para Retornarmos...");
                     Console.ReadKey();
                     Banner();
                     MenuPrincipal();
-
                 }
                 else
                 {
