@@ -8,19 +8,19 @@ namespace DesafioCSharp7DaysOfCode.Enums
 {
     public enum EnumAlimentos
     {
-        Banana,
-        Maca,
-        Pera,
-        Melancia,
-        Ovos,
-        Queijo,
-        Agua,
-        Insetos,
-        Melao,
-        Pimentao,
-        Cenoura,
-        Abacaxi,
-        Soja,
-        Ar
+        Banana = 5,
+        Maca = 4,
+        Pera = 3,
+        Melancia = 20,
+        Ovos = 2,
+        Queijo = 1,
+        Agua = 30,
+        Insetos = 9,
+        Melao = 18,
+        Pimentao = 7,
+        Cenoura = 11,
+        Abacaxi = 12,
+        Soja = 15
+
     }
 }

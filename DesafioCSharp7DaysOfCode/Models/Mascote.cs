@@ -1,77 +1,78 @@
-﻿using DesafioCSharp7DaysOfCode.Controllers;
-using DesafioCSharp7DaysOfCode.Enums;
-using DesafioCSharp7DaysOfCode.Services;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace DesafioCSharp7DaysOfCode.Models
 {
     public class Mascote
     {
-        public List<DadosPokemon> DadosMascote { get; set; }
-        public string Nome { get; set; }
+        public int Id { get; set; }
+        public HabilidadesPokemon[] Abilities { get; set; }
+        public int Height { get; set; }
+        public string Nome
+        {
+            get
+            {
+                if (String.IsNullOrEmpty(Nome))
+                {
+                    Nome = $"Mascotão Sem Nome Silva";
+                }
+                return Nome;
+            }
+            set
+            {
+                Nome = value;
+            }
+        }
+        public string Name { get; set; }
+        public int Weight { get; set; }
         public string Especie { get; set; }
         public List<string> Alimentacao { get; set; }
         public int Idade { get; private set; }
-        public int StatusSaude { get; set; }
-        public int StatusFome { get; set; }
-        public int StatusHumor { get; set; }
-        public int StatusEnergia { get; set; }
-
-        public Mascote()
+        public int StatusSaude
         {
-            ObterSaude();
-            ObterAlimentação();
+            get { return StatusSaude; }
+
+            set
+            {
+                if (StatusSaude > 100) value = 100;
+                else if (StatusSaude < 0) value = 0;
+                else StatusSaude = value;
+            }
         }
-        public Mascote(string nome, string especie)
+        public int StatusFome
         {
-            Nome = nome;
+            get { return StatusFome; }
 
-            CarregaListaPokemons();
-            CarregaEspecieMascote(especie);
-            InicilizacaoPadraoMascote();
+            set
+            {
+                if (StatusFome > 100) value = 100;
+                else if (StatusFome < 0) value = 0;
+                else StatusFome = value;
+            }
         }
-
-        private void InicilizacaoPadraoMascote()
+        public int StatusHumor
         {
-            StatusHumor = 100;
-            StatusEnergia = 100;
-            StatusFome = 0;
-            ObterSaude();
-            ObterAlimentação();
+            get { return StatusHumor; }
+
+            set
+            {
+                if (StatusHumor > 100) value = 100;
+                else if (StatusHumor < 0) value = 0;
+                else StatusHumor = value;
+            }
         }
-
-        public List<string> ObterAlimentação()
+        public int StatusEnergia
         {
-            List<string> alimentacao = MascoteController.GerarAlimentacao();
-            Alimentacao = alimentacao; ;
-            return Alimentacao.ToList();
-        }
-        public int ObterSaude()
-        {
-            Random random = new Random();
-            string statusSaude = random.Next().ToString();
-            statusSaude = statusSaude.Substring(0, 2);
-            return StatusSaude = Convert.ToInt32(statusSaude);
-        }
-        private void CarregaEspecieMascote(string especie)
-        {
-            var especieEscolhida = from m in DadosMascote
-                                   where m.Name == especie
-                                   select m;
+            get { return StatusEnergia; }
 
-            Especie = especie;
-            DadosMascote = especieEscolhida.ToList();
-        }
-        private void CarregaListaPokemons()
-        {
-
-            List<DadosPokemon> listDadosMascote = PokemonService.CarregaDadosPokemon();
-            DadosMascote = listDadosMascote;
-
+            set
+            {
+                if (StatusEnergia > 100) value = 100;
+                else if (StatusEnergia < 0) value = 0;
+                else StatusEnergia = value;
+            }
         }
         public void SalvarDadosMascote()
         {

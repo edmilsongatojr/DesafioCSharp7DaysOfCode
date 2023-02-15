@@ -1,4 +1,5 @@
-﻿using DesafioCSharp7DaysOfCode.Models;
+﻿using AutoMapper;
+using DesafioCSharp7DaysOfCode.Models;
 using DesafioCSharp7DaysOfCode.Services;
 using System;
 using System.Collections.Generic;
@@ -77,9 +78,10 @@ namespace DesafioCSharp7DaysOfCode.Views
                 if (!String.IsNullOrEmpty(especieMascote))
                 {
                     validaOpcao = false;
-                    mascote = new Mascote(nomeMascote, especieMascote.ToLower());
+                    DadosPokemon dadosPokemon = new DadosPokemon(nomeMascote,especieMascote);
+                    mascote = Mapper.Map<Mascote>(dadosPokemon);
                     mascote.SalvarDadosMascote();
-                    mascote.CarregarDadosMascote();
+                    //mascote.CarregarDadosMascote();
                     Console.WriteLine("| Informações Salvas com Sucesso!");
                     Console.WriteLine("| Iremos Retornar ao Menu Principal :) Pressione qualquer tecla para Retornarmos...");
                     Console.ReadKey();

@@ -31,30 +31,29 @@ namespace DesafioCSharp7DaysOfCode.Views
                 switch (opcao)
                 {
                     case "1":
-                        Console.WriteLine($"| O {mascote.Nome} está se alimentando!");
+                        Console.WriteLine($"\n| O {mascote.Nome} está se alimentando!");
                         Thread.Sleep(1000);
-                        Console.WriteLine($"| O {mascote.Nome} diz: {mascote.Nome}...{mascote.Nome}...{mascote.Nome.ToUpper()}");
+                        Console.WriteLine($"\n| O {mascote.Nome} diz: {mascote.Nome}...{mascote.Nome}...{mascote.Nome.ToUpper()}");
                         mascoteController.AlimentarMascote();
                         break;
                     case "2":
-                        Console.WriteLine($"| O {mascote.Nome} está se brincando :)!");
+                        Console.WriteLine($"\n| O {mascote.Nome} está se brincando :)!");
                         Thread.Sleep(1000);
                         Console.WriteLine("Brinca...");
                         Thread.Sleep(1000);
                         Console.Write("Brinca...");
-                        Console.WriteLine($"| O {mascote.Nome} diz: {mascote.Nome}...{mascote.Nome}...{mascote.Nome.ToUpper()}");
+                        Console.WriteLine($"\n| O {mascote.Nome} diz: {mascote.Nome}...{mascote.Nome}...{mascote.Nome.ToUpper()}");
                         mascoteController.BrincarMascote();
                         break;
                     case "3":
-                        Console.WriteLine($"| Estamos Medicando o {mascote.Nome}! :(");
+                        Console.WriteLine($"\n| Estamos Medicando o {mascote.Nome}! :(");
                         Thread.Sleep(1000);
-                        Console.WriteLine($"| O {mascote.Nome} diz: {mascote.Nome}...{mascote.Nome}...{mascote.Nome.ToUpper()}");
+                        Console.WriteLine($"\n| O {mascote.Nome} diz: {mascote.Nome}...{mascote.Nome}...{mascote.Nome.ToUpper()}");
                         Thread.Sleep(1000);
-                        Console.WriteLine($"| O {mascote.Nome} se sente bem melhor :)");
+                        Console.WriteLine($"\n| O {mascote.Nome} se sente bem melhor :)");
                         mascoteController.MedicarMascote();
                         break;
                     case "4":
-                       
                         mascoteController.NinarMascote();
                         break;
                     case "0":
@@ -64,8 +63,9 @@ namespace DesafioCSharp7DaysOfCode.Views
                         Console.WriteLine($"\n| Nao encontrei a opcao informada!\n| {Jogador.Nome} Selecione um opcao valida!\n\n");
                         break;
                 }
-                Console.WriteLine("| Pressione qualquer tecla para retornar ao menu de interação...");
-                Console.ReadKey();
+                if (!opcao.Equals("0")) return;
+                Console.WriteLine("\n| Pressione qualquer tecla para retornar ao menu de interação...");
+                Console.ReadLine();
                 Banner();
                 InteracoesMascote();
                 validaOpcao = false;

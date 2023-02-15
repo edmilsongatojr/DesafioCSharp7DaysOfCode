@@ -1,4 +1,6 @@
-﻿using DesafioCSharp7DaysOfCode.Models;
+﻿using AutoMapper;
+using DesafioCSharp7DaysOfCode.AutoMapperController;
+using DesafioCSharp7DaysOfCode.Models;
 using System;
 
 namespace DesafioCSharp7DaysOfCode.Views
@@ -10,5 +12,7 @@ namespace DesafioCSharp7DaysOfCode.Views
             Inicializa();
             Console.ReadKey();
         }
+
+
     }
 }

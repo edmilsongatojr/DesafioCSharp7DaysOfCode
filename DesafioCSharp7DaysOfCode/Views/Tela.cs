@@ -1,4 +1,6 @@
-﻿using DesafioCSharp7DaysOfCode.Models;
+﻿using AutoMapper;
+using DesafioCSharp7DaysOfCode.AutoMapperController;
+using DesafioCSharp7DaysOfCode.Models;
 using DesafioCSharp7DaysOfCode.Services;
 using System;
 using System.Collections.Generic;
@@ -9,10 +11,11 @@ namespace DesafioCSharp7DaysOfCode.Views
     partial class Program
     {
         static Mascote mascote = new Mascote();
-        private static List<MainPokemon> mainPokemons { get; set; }
+        private static List<MainPokemon> MainPokemons { get; set; }
         public static void Inicializa()
         {
-            mainPokemons = PokemonService.CarregaMainPokemons((int)EnumConfig.Offset, (int)EnumConfig.Limit);
+            AutoMapperUtil.InicializaAutoMapper();
+            MainPokemons = PokemonService.CarregaMainPokemons((int)EnumConfig.Offset, (int)EnumConfig.Limit);
             Banner();
             PerguntaNomeJogador();
             MenuPrincipal();
@@ -35,7 +38,7 @@ namespace DesafioCSharp7DaysOfCode.Views
             if (!String.IsNullOrEmpty(Jogador.Nome))
             {
                 Console.WriteLine($" | Jogador Ativo: {Jogador.Nome.ToUpper()} |");
-                if (!string.IsNullOrEmpty(mascote.Nome) && mascote.DadosMascote != null)
+                if (!string.IsNullOrEmpty(mascote.Nome) && !string.IsNullOrEmpty(mascote.Name) && mascote.Alimentacao != null)
                 {
                     VisualizadorDeStatus();
                 }
@@ -60,7 +63,7 @@ namespace DesafioCSharp7DaysOfCode.Views
             Console.WriteLine($"Olá {Jogador.Nome}! Vamos Brincar?");
             int countOpcao = 1;
             bool interacao = false;
-            if (string.IsNullOrEmpty(mascote.Nome) && mascote.DadosMascote is null)
+            if (string.IsNullOrEmpty(mascote.Nome) && string.IsNullOrEmpty(mascote.Name) && mascote.Alimentacao is null)
             {
                 Console.WriteLine($" {countOpcao} - Bora adotar um bicho virtual?");
             }

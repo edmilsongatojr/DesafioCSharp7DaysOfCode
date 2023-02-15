@@ -32,7 +32,31 @@ namespace DesafioCSharp7DaysOfCode.Controllers
         }
         internal void AlimentarMascote()
         {
+            Console.WriteLine($"| Qual Alimento deseja alimentar o {Mascote.Nome}?");
+            int countOpcoes = 1;
+            foreach (var alimento in Mascote.Alimentacao)
+            {
+                Console.WriteLine($" {countOpcoes} - {alimento}.");
+                countOpcoes++;
+            }
+            Console.WriteLine("Opção: ");
+            var opcao = Console.ReadLine();
 
+            bool validaOpcao = true;
+            while (validaOpcao)
+            {
+                opcao = opcao.Substring(5).Trim();
+                Console.WriteLine($"O {Mascote.Nome} esta se Alimentando com {opcao}...");
+                Thread.Sleep(1000);
+                EnumAlimentos enumAllimentos;
+                if (Enum.TryParse(opcao, out enumAllimentos))
+                {
+                    int opcaoInt = (int)enumAllimentos;
+                    Mascote.StatusFome -= opcaoInt;
+                }
+                Console.WriteLine($"| O {Mascote.Nome} diz: {Mascote.Nome}...{Mascote.Nome}...{Mascote.Nome.ToUpper()}");
+
+            }
         }
         internal void NinarMascote()
         {

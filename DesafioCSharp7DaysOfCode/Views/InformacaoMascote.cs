@@ -15,31 +15,28 @@ namespace DesafioCSharp7DaysOfCode.Views
         }
         private static void CarregaNaTelaDadosMascote()
         {
-            foreach (var pokemon in mascote.DadosMascote)
+            Console.WriteLine($"    Especie: {mascote.Name.ToUpper()}");
+            Console.WriteLine($"    Idade: {mascote.Idade}");
+            Console.WriteLine($"        ID: {mascote.Id}");
+            Console.WriteLine($"        Alimentação:");
+
+            int countAlimento = 1;
+            foreach (var alimento in mascote.Alimentacao)
             {
-                Console.WriteLine($"    Especie: {pokemon.Name.ToUpper()}");
-                Console.WriteLine($"    Idade: {mascote.Idade}");
-                Console.WriteLine($"        ID: {pokemon.Id}");
-                Console.WriteLine($"        Alimentação:");
+                Console.WriteLine($"            {countAlimento} - {alimento}");
+                countAlimento++;
+            }
 
-                int countAlimento = 1;
-                foreach (var alimento in mascote.Alimentacao)
-                {
-                    Console.WriteLine($"            {countAlimento} - {alimento}");
-                    countAlimento++;
-                }
+            Console.WriteLine($"        Status de Saude: {mascote.StatusSaude}");
+            Console.WriteLine($"        Altura: {mascote.Height}");
+            Console.WriteLine($"        Peso: {mascote.Weight}");
+            Console.WriteLine($"        Habilidades:");
 
-                Console.WriteLine($"        Status de Saude: {mascote.StatusSaude}");
-                Console.WriteLine($"        Altura: {pokemon.Height}");
-                Console.WriteLine($"        Peso: {pokemon.Weight}");
-                Console.WriteLine($"        Habilidades:");
-
-                int countHabilidade = 1;
-                foreach (var habilidade in pokemon.Abilities)
-                {
-                    Console.WriteLine($"            Habilidade {countHabilidade}: {habilidade.Ability.Name.ToUpper()}");
-                    countHabilidade++;
-                }
+            int countHabilidade = 1;
+            foreach (var habilidade in mascote.Abilities)
+            {
+                Console.WriteLine($"            Habilidade {countHabilidade}: {habilidade.Ability.Name.ToUpper()}");
+                countHabilidade++;
             }
             Console.WriteLine(GeraConteudo('_', 120));
             Console.WriteLine("Pressione qualquer tecla para retornar ao Menu Principal...");
@@ -48,14 +45,11 @@ namespace DesafioCSharp7DaysOfCode.Views
 
         private static void VisualizadorDeStatus()
         {
-            foreach (var dados in mascote.DadosMascote)
-            {
-                Console.WriteLine();
-                Console.WriteLine($" [ Nome: {mascote.Nome} ] | [ Idade: {mascote.Idade} ] | [ Especie: {dados.Name} ]");
-                Console.WriteLine($" [ Energia: {mascote.StatusEnergia} ] | [ Saude: {mascote.StatusSaude} ] | [ Fome: {mascote.StatusFome} ] | [ Humor: {mascote.StatusHumor} ]");
-                Console.WriteLine();
-            }
 
+            Console.WriteLine();
+            Console.WriteLine($" [ Nome: {mascote.Nome} ] | [ Idade: {mascote.Idade} ] | [ Especie: {mascote.Especie} ]");
+            Console.WriteLine($" [ Energia: {mascote.StatusEnergia} ] | [ Saude: {mascote.StatusSaude} ] | [ Fome: {mascote.StatusFome} ] | [ Humor: {mascote.StatusHumor} ]");
+            Console.WriteLine();
 
         }
     }
