@@ -18,7 +18,7 @@ namespace DesafioCSharp7DaysOfCode.Models
         public int Weight { get; set; }
         public string Especie { get; set; }
         public List<string> Alimentacao { get; set; }
-        public int Idade { get; private set; }
+        public double Idade { get; private set; }
         public int StatusSaude { get; set; }
         public int StatusFome { get; set; }
         public int StatusHumor { get; set; }

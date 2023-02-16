@@ -29,7 +29,7 @@ namespace DesafioCSharp7DaysOfCode.Views
             try
             {
                 Console.WriteLine($"    Especie: {mascote.Name.ToUpper()}");
-                Console.WriteLine($"    Idade: {mascote.Idade}");
+                Console.WriteLine($"    Idade: {mascote.ObterIdade()}");
                 Console.WriteLine($"        ID: {mascote.Id}");
                 Console.WriteLine($"        Alimentação:");
 
@@ -65,13 +65,20 @@ namespace DesafioCSharp7DaysOfCode.Views
             try
             {
                 Console.WriteLine();
-                Console.WriteLine($" [ Nome: {mascote.Nome} ] | [ Idade: {mascote.Idade} ] | [ Especie: {mascote.Especie} ]");
+                Console.WriteLine($" [ Nome: {mascote.Nome} ] | [ Idade: {mascote.ObterIdade()} ] | [ Especie: {mascote.Especie} ]");
                 Console.WriteLine($" [ Energia: {mascote.StatusEnergia} ] | [ Saude: {mascote.StatusSaude} ] | [ Fome: {mascote.StatusFome} ] | [ Humor: {mascote.StatusHumor} ]");
                 Console.WriteLine();
             }
             catch (Exception ex)
             {
                 TratamentoController.Mensagem(ex);
+            }
+            finally
+            {
+                if (mascote.Name != null)
+                {
+                    mascote.SalvarDadosMascote();
+                }
             }
         }
     }

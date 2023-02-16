@@ -33,7 +33,6 @@ namespace DesafioCSharp7DaysOfCode.Controllers
                 Thread.Sleep(1000);
                 Console.Write("Brinca...");
                 Console.WriteLine($"|-> {Mascote.Nome} Diz: {Mascote.Nome}...{Mascote.Nome}...{Mascote.Nome} :)");
-                Console.ReadKey();
 
             }
             catch (Exception ex)
@@ -68,7 +67,6 @@ namespace DesafioCSharp7DaysOfCode.Controllers
                     Mascote.StatusFome -= opcaoInt;
                 }
                 Console.WriteLine($"| O {Mascote.Nome} diz: {Mascote.Nome}...{Mascote.Nome}...{Mascote.Nome.ToUpper()}");
-                Console.ReadKey();
 
             }
             catch (Exception ex)
@@ -99,7 +97,6 @@ namespace DesafioCSharp7DaysOfCode.Controllers
                     Console.WriteLine($"| O {Mascote.Nome} diz: {Mascote.Nome}...{Mascote.Nome}...{Mascote.Nome.ToUpper()}");
                     Mascote.StatusEnergia = 100;
                 }
-                Console.ReadKey();
             }
             catch (Exception ex)
             {
@@ -118,12 +115,15 @@ namespace DesafioCSharp7DaysOfCode.Controllers
                 Console.WriteLine($"\n| O {Mascote.Nome} diz: {Mascote.Nome}...{Mascote.Nome}...{Mascote.Nome.ToUpper()}");
                 Thread.Sleep(1000);
                 Console.WriteLine($"\n| O {Mascote.Nome} se sente bem melhor :)");
-                Console.ReadKey();
             }
             catch (Exception ex)
             {
                 TratamentoController.Mensagem(ex);
             }
+        }
+        internal double AumentarIdade()
+        {
+            return Mascote.Idade += 0.2;
         }
         internal static List<string> GerarAlimentacao()
         {

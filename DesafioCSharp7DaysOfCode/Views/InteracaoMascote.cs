@@ -13,6 +13,7 @@ namespace DesafioCSharp7DaysOfCode.Views
     {
         private static void InteracoesMascote()
         {
+            MascoteController mascoteController = new MascoteController(mascote);
             try
             {
                 Banner();
@@ -26,7 +27,6 @@ namespace DesafioCSharp7DaysOfCode.Views
                 var opcao = Console.ReadLine();
 
                 bool validaOpcao = true;
-                MascoteController mascoteController = new MascoteController(mascote);
                 while (validaOpcao)
                 {
 
@@ -45,6 +45,7 @@ namespace DesafioCSharp7DaysOfCode.Views
                             mascoteController.NinarMascote();
                             break;
                         case "0":
+                            validaOpcao = false;
                             MenuPrincipal();
                             break;
                         default:
@@ -53,7 +54,9 @@ namespace DesafioCSharp7DaysOfCode.Views
                             InteracoesMascote();
                             break;
                     }
-                    validaOpcao = false;
+                    Console.WriteLine("\n| Pressione qualquer tecla para continuar... :)");
+                    Console.ReadKey();
+                    InteracoesMascote();
                 }
             }
             catch (Exception ex)

@@ -20,15 +20,15 @@ namespace DesafioCSharp7DaysOfCode.Views
             AutoMapperUtil.InicializaAutoMapper();
             MainPokemons = PokemonService.CarregaMainPokemons((int)EnumConfig.Offset, (int)EnumConfig.Limit);
             VerificarDadosSalvos();
-
-
         }
 
         private static void VerificarDadosSalvos()
         {
             try
             {
+                Mascote _mascote = new Mascote();
                 Banner();
+                _mascote.VerificaExistenciaJson();
                 if (!mascote.ValidarDadosSalvos())
                 {
                     PerguntaNomeJogador();
@@ -45,7 +45,7 @@ namespace DesafioCSharp7DaysOfCode.Views
                     switch (opcao)
                     {
                         case "1":
-                            Mascote _mascote = new Mascote();
+                            
                             mascote = _mascote.CarregarDadosMascote();
                             MenuPrincipal();
                             break;
@@ -183,7 +183,7 @@ namespace DesafioCSharp7DaysOfCode.Views
                             MenuPrincipal();
                             break;
                     }
-                    validaOpcao = false;
+                   
                 }
             }
             catch (Exception ex)

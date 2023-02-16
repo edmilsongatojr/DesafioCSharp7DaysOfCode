@@ -35,7 +35,7 @@ namespace DesafioCSharp7DaysOfCode.Models
         public int Weight { get; set; }
         public string Especie { get; set; }
         public List<string> Alimentacao { get; set; }
-        public int Idade { get; private set; }
+        public double Idade { get; set; }
         public int StatusSaude
         {
             get { return statusSaude; }
@@ -82,6 +82,10 @@ namespace DesafioCSharp7DaysOfCode.Models
         }
 
 
+        public int ObterIdade()
+        {
+            return Convert.ToInt32(Idade);
+        }
         public void SalvarDadosMascote()
         {
             try
@@ -108,6 +112,7 @@ namespace DesafioCSharp7DaysOfCode.Models
                 {
                     mascote = JsonConvert.DeserializeObject<Mascote>(fluxoJson.ReadLine());
                 }
+                
                 return mascote;
 
             }
@@ -123,19 +128,36 @@ namespace DesafioCSharp7DaysOfCode.Models
             try
             {
                 Mascote _mascote = CarregarDadosMascote();
-                if (_mascote is null )
+                VerificaExistenciaJson();
+                if (_mascote is null)
                 {
                     return false;
                 }
                 else
                 {
+                    Jogador.Nome = _mascote.Nome;
                     return true;
                 }
-            }
-            catch (Exception)
-            {
 
-                throw;
+            }
+            catch (Exception ex)
+            {
+                TratamentoController.Mensagem(ex);
+                return false;
+            }
+        }
+
+        public void VerificaExistenciaJson()
+        {
+            string caminhoArquivo = "DadosMascote.json";
+            if (!File.Exists(caminhoArquivo))
+            {
+                string json = "";
+                using (StreamWriter fluxoJson = new StreamWriter(caminhoArquivo))
+                {
+                    fluxoJson.WriteLine(json);
+                }
+
             }
         }
     }
