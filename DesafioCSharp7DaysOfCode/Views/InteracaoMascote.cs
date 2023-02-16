@@ -13,62 +13,53 @@ namespace DesafioCSharp7DaysOfCode.Views
     {
         private static void InteracoesMascote()
         {
-            Banner();
-            Console.WriteLine($" 1 - Alimentar o {mascote.Nome}.");
-            Console.WriteLine($" 2 - Brincar com o {mascote.Nome}.");
-            Console.WriteLine($" 3 - Medicar o {mascote.Nome}.");
-            Console.WriteLine($" 4 - Colocar o {mascote.Nome} para dormir.");
-            Console.WriteLine($" 0 - Retornar ao menu principal.");
-            Console.WriteLine(GeraConteudo('_', 120));
-            Console.Write("| O que deseja fazer? Opção: ");
-            var opcao = Console.ReadLine();
+            try
+            {
+                Banner();
+                Console.WriteLine($" 1 - Alimentar o {mascote.Nome}.");
+                Console.WriteLine($" 2 - Brincar com o {mascote.Nome}.");
+                Console.WriteLine($" 3 - Medicar o {mascote.Nome}.");
+                Console.WriteLine($" 4 - Colocar o {mascote.Nome} para dormir.");
+                Console.WriteLine($" 0 - Retornar ao menu principal.");
+                Console.WriteLine(GeraConteudo('_', 120));
+                Console.Write("| O que deseja fazer? Opção: ");
+                var opcao = Console.ReadLine();
 
-            bool validaOpcao = true;
-            MascoteController mascoteController = new MascoteController(mascote);
-            while (validaOpcao)
+                bool validaOpcao = true;
+                MascoteController mascoteController = new MascoteController(mascote);
+                while (validaOpcao)
+                {
+
+                    switch (opcao)
+                    {
+                        case "1":
+                            mascoteController.AlimentarMascote();
+                            break;
+                        case "2":
+                            mascoteController.BrincarMascote();
+                            break;
+                        case "3":
+                            mascoteController.MedicarMascote();
+                            break;
+                        case "4":
+                            mascoteController.NinarMascote();
+                            break;
+                        case "0":
+                            MenuPrincipal();
+                            break;
+                        default:
+                            Console.WriteLine($"\n| Nao encontrei a opcao informada!\n| {Jogador.Nome} Selecione um opcao valida!\n\n");
+                            Banner();
+                            InteracoesMascote();
+                            break;
+                    }
+                    validaOpcao = false;
+                }
+            }
+            catch (Exception ex)
             {
 
-                switch (opcao)
-                {
-                    case "1":
-                        Console.WriteLine($"\n| O {mascote.Nome} está se alimentando!");
-                        Thread.Sleep(1000);
-                        Console.WriteLine($"\n| O {mascote.Nome} diz: {mascote.Nome}...{mascote.Nome}...{mascote.Nome.ToUpper()}");
-                        mascoteController.AlimentarMascote();
-                        break;
-                    case "2":
-                        Console.WriteLine($"\n| O {mascote.Nome} está se brincando :)!");
-                        Thread.Sleep(1000);
-                        Console.WriteLine("Brinca...");
-                        Thread.Sleep(1000);
-                        Console.Write("Brinca...");
-                        Console.WriteLine($"\n| O {mascote.Nome} diz: {mascote.Nome}...{mascote.Nome}...{mascote.Nome.ToUpper()}");
-                        mascoteController.BrincarMascote();
-                        break;
-                    case "3":
-                        Console.WriteLine($"\n| Estamos Medicando o {mascote.Nome}! :(");
-                        Thread.Sleep(1000);
-                        Console.WriteLine($"\n| O {mascote.Nome} diz: {mascote.Nome}...{mascote.Nome}...{mascote.Nome.ToUpper()}");
-                        Thread.Sleep(1000);
-                        Console.WriteLine($"\n| O {mascote.Nome} se sente bem melhor :)");
-                        mascoteController.MedicarMascote();
-                        break;
-                    case "4":
-                        mascoteController.NinarMascote();
-                        break;
-                    case "0":
-                        MenuPrincipal();
-                        break;
-                    default:
-                        Console.WriteLine($"\n| Nao encontrei a opcao informada!\n| {Jogador.Nome} Selecione um opcao valida!\n\n");
-                        break;
-                }
-                if (!opcao.Equals("0")) return;
-                Console.WriteLine("\n| Pressione qualquer tecla para retornar ao menu de interação...");
-                Console.ReadLine();
-                Banner();
-                InteracoesMascote();
-                validaOpcao = false;
+                TratamentoController.Mensagem(ex);
             }
         }
     }

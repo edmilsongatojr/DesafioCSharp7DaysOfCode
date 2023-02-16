@@ -13,40 +13,53 @@ namespace DesafioCSharp7DaysOfCode.Controllers
     public class MascoteController
     {
         public Mascote Mascote { get; set; }
-        public MascoteController()
-        {
 
-        }
         public MascoteController(Mascote mascote)
         {
             Mascote = mascote;
         }
         internal void BrincarMascote()
         {
-            Mascote.StatusHumor += 10;
-            Mascote.StatusSaude++;
-            Mascote.StatusFome += 20;
-            Mascote.StatusEnergia -= 15;
+            try
+            {
+                Mascote.StatusHumor += 10;
+                Mascote.StatusSaude++;
+                Mascote.StatusFome += 20;
+                Mascote.StatusEnergia -= 15;
 
-            Console.WriteLine($"|-> {Mascote.Nome} Diz: {Mascote.Nome}...{Mascote.Nome}...{Mascote.Nome} :)");
+                Console.WriteLine($"\n| O {Mascote.Nome} está brincando :)!");
+                Thread.Sleep(1000);
+                Console.Write("Brinca...");
+                Thread.Sleep(1000);
+                Console.Write("Brinca...");
+                Console.WriteLine($"|-> {Mascote.Nome} Diz: {Mascote.Nome}...{Mascote.Nome}...{Mascote.Nome} :)");
+                Console.ReadKey();
+
+            }
+            catch (Exception ex)
+            {
+                TratamentoController.Mensagem(ex);
+            }
+
         }
         internal void AlimentarMascote()
         {
-            Console.WriteLine($"| Qual Alimento deseja alimentar o {Mascote.Nome}?");
-            int countOpcoes = 1;
-            foreach (var alimento in Mascote.Alimentacao)
+            try
             {
-                Console.WriteLine($" {countOpcoes} - {alimento}.");
-                countOpcoes++;
-            }
-            Console.WriteLine("Opção: ");
-            var opcao = Console.ReadLine();
+                Console.WriteLine($"\n| O {Mascote.Nome} está feliz em ir se alimentar!");
+                Thread.Sleep(1000);
+                Console.WriteLine($"\n| O {Mascote.Nome} diz: {Mascote.Nome}...{Mascote.Nome}...{Mascote.Nome.ToUpper()}");
+                Console.WriteLine($"| Qual Alimento deseja alimentar o {Mascote.Nome}?");
+                int countOpcoes = 1;
+                foreach (var alimento in Mascote.Alimentacao)
+                {
+                    Console.WriteLine($" {countOpcoes} - {alimento}.");
+                    countOpcoes++;
+                }
+                Console.Write("Opção: ");
+                var opcao = Console.ReadLine();
 
-            bool validaOpcao = true;
-            while (validaOpcao)
-            {
-                opcao = opcao.Substring(5).Trim();
-                Console.WriteLine($"O {Mascote.Nome} esta se Alimentando com {opcao}...");
+                Console.WriteLine($"O {Mascote.Nome} esta se Alimentando...");
                 Thread.Sleep(1000);
                 EnumAlimentos enumAllimentos;
                 if (Enum.TryParse(opcao, out enumAllimentos))
@@ -55,35 +68,62 @@ namespace DesafioCSharp7DaysOfCode.Controllers
                     Mascote.StatusFome -= opcaoInt;
                 }
                 Console.WriteLine($"| O {Mascote.Nome} diz: {Mascote.Nome}...{Mascote.Nome}...{Mascote.Nome.ToUpper()}");
+                Console.ReadKey();
 
             }
+            catch (Exception ex)
+            {
+                TratamentoController.Mensagem(ex);
+            }
+
         }
         internal void NinarMascote()
         {
-            if (Mascote.StatusEnergia.Equals(100))
+            try
             {
-                Console.WriteLine($"| O {Mascote.Nome} não tem sono! Ele quer consquistar o mundoo :) GrrahhH");
+                if (Mascote.StatusEnergia.Equals(100))
+                {
+                    Console.WriteLine($"| O {Mascote.Nome} não tem sono! Ele quer consquistar o mundoo :) GrrahhH");
 
+                }
+                else
+                {
+                    Console.WriteLine($"| O {Mascote.Nome} está Dor....RonczZ!");
+                    Thread.Sleep(1000);
+                    Console.Write($"| z");
+                    Thread.Sleep(1000);
+                    Console.Write($"...zZ");
+                    Thread.Sleep(1000);
+                    Console.Write($"...Roonc");
+                    Thread.Sleep(1000);
+                    Console.WriteLine($"| O {Mascote.Nome} diz: {Mascote.Nome}...{Mascote.Nome}...{Mascote.Nome.ToUpper()}");
+                    Mascote.StatusEnergia = 100;
+                }
+                Console.ReadKey();
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine($"| O {Mascote.Nome} está Dor....RonczZ!");
-                Thread.Sleep(1000);
-                Console.Write($"| z");
-                Thread.Sleep(1000);
-                Console.Write($"...zZ");
-                Thread.Sleep(1000);
-                Console.Write($"...Roonc");
-                Thread.Sleep(1000);
-                Console.WriteLine($"| O {Mascote.Nome} diz: {Mascote.Nome}...{Mascote.Nome}...{Mascote.Nome.ToUpper()}");
-                Mascote.StatusEnergia = 100;
+                TratamentoController.Mensagem(ex);
             }
         }
         internal void MedicarMascote()
         {
-            Mascote.StatusHumor += 20;
-            Mascote.StatusEnergia += (Mascote.StatusEnergia / 2);
-            Mascote.StatusSaude = 100;
+            try
+            {
+                Mascote.StatusHumor += 20;
+                Mascote.StatusEnergia += (Mascote.StatusEnergia / 2);
+                Mascote.StatusSaude = 100;
+                Console.WriteLine($"\n| Estamos Medicando o {Mascote.Nome}! :(");
+                Thread.Sleep(1000);
+                Console.WriteLine($"\n| O {Mascote.Nome} diz: {Mascote.Nome}...{Mascote.Nome}...{Mascote.Nome.ToUpper()}");
+                Thread.Sleep(1000);
+                Console.WriteLine($"\n| O {Mascote.Nome} se sente bem melhor :)");
+                Console.ReadKey();
+            }
+            catch (Exception ex)
+            {
+                TratamentoController.Mensagem(ex);
+            }
         }
         internal static List<string> GerarAlimentacao()
         {
@@ -101,7 +141,6 @@ namespace DesafioCSharp7DaysOfCode.Controllers
                 }
                 alimentacao.Add(alimento.ToString());
             }
-
             return alimentacao;
         }
     }

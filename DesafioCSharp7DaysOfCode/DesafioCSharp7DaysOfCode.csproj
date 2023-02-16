@@ -88,6 +88,7 @@
   <ItemGroup>
     <Compile Include="AutoMapperController\MappingProfile.cs" />
     <Compile Include="Connections\PokemonsConnections.cs" />
+    <Compile Include="Controllers\TratamentoController.cs" />
     <Compile Include="Enums\EnumAlimentos.cs" />
     <Compile Include="AutoMapperController\AutoMapperUtil.cs" />
     <Compile Include="Views\InformacaoMascote.cs" />

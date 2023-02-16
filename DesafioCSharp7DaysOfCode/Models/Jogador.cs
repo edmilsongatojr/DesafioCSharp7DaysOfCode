@@ -3,6 +3,6 @@
     public class Jogador
     {
         public static string Nome { get; set; }
-        public Mascote Mascote { get; set; }   
+        //public Mascote Mascote { get; set; }   
     }
 }

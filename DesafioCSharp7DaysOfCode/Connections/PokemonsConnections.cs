@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using DesafioCSharp7DaysOfCode.Controllers;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +14,20 @@ namespace DesafioCSharp7DaysOfCode.Connections
         public static string UrlApi { get => urlapi; set => urlapi = value; }
         public static RestResponse ComunicaAPIPokemons(string endpoint)
         {
-            RestClient client = RestClientApi(endpoint);
             var request = new RestRequest();
+            RestClient client = RestClientApi(endpoint);
             var response = client.ExecuteGet(request);
+            try
+            { 
+                return response;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine($"Encontramos um problema ao se conectar na API. {response.StatusCode}");
+                Console.ReadKey();
+                return response;
+            }
 
-            return response;
         }
         private static RestClient RestClientApi(string endpoint)
         {

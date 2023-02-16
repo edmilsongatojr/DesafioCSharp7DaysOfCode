@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DesafioCSharp7DaysOfCode.Controllers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,6 +8,11 @@ namespace DesafioCSharp7DaysOfCode.Models
 {
     public class Mascote
     {
+        private string nome;
+        private int statusSaude;
+        private int statusFome;
+        private int statusHumor;
+        private int statusEnergia;
         public int Id { get; set; }
         public HabilidadesPokemon[] Abilities { get; set; }
         public int Height { get; set; }
@@ -14,15 +20,15 @@ namespace DesafioCSharp7DaysOfCode.Models
         {
             get
             {
-                if (String.IsNullOrEmpty(Nome))
+                if (String.IsNullOrEmpty(nome))
                 {
-                    Nome = $"Mascotão Sem Nome Silva";
+                    nome = $"Mascotão Sem Nome Silva";
                 }
-                return Nome;
+                return nome;
             }
             set
             {
-                Nome = value;
+                nome = value;
             }
         }
         public string Name { get; set; }
@@ -32,67 +38,105 @@ namespace DesafioCSharp7DaysOfCode.Models
         public int Idade { get; private set; }
         public int StatusSaude
         {
-            get { return StatusSaude; }
+            get { return statusSaude; }
 
             set
             {
-                if (StatusSaude > 100) value = 100;
-                else if (StatusSaude < 0) value = 0;
-                else StatusSaude = value;
+                if (value > 100) statusSaude = 100;
+                else if (value < 0) statusSaude = 0;
+                else statusSaude = value;
             }
         }
         public int StatusFome
         {
-            get { return StatusFome; }
+            get { return statusFome; }
 
             set
             {
-                if (StatusFome > 100) value = 100;
-                else if (StatusFome < 0) value = 0;
-                else StatusFome = value;
+                if (value > 100) statusFome = 100;
+                else if (value < 0) statusFome = 0;
+                else statusFome = value;
             }
         }
         public int StatusHumor
         {
-            get { return StatusHumor; }
+            get { return statusHumor; }
 
             set
             {
-                if (StatusHumor > 100) value = 100;
-                else if (StatusHumor < 0) value = 0;
-                else StatusHumor = value;
+                if (value > 100) statusHumor = 100;
+                else if (value < 0) statusHumor = 0;
+                else statusHumor = value;
             }
         }
         public int StatusEnergia
         {
-            get { return StatusEnergia; }
+            get { return statusEnergia; }
 
             set
             {
-                if (StatusEnergia > 100) value = 100;
-                else if (StatusEnergia < 0) value = 0;
-                else StatusEnergia = value;
+                if (value > 100) statusEnergia = 100;
+                else if (value < 0) statusEnergia = 0;
+                else statusEnergia = value;
             }
         }
+
+
         public void SalvarDadosMascote()
         {
-            string caminhoArquivo = "DadosMascote.json";
-            string json = JsonConvert.SerializeObject(this);
-            using (StreamWriter fluxoJson = new StreamWriter(caminhoArquivo))
+            try
             {
-                fluxoJson.WriteLine(json);
+                string caminhoArquivo = "DadosMascote.json";
+                string json = JsonConvert.SerializeObject(this);
+                using (StreamWriter fluxoJson = new StreamWriter(caminhoArquivo))
+                {
+                    fluxoJson.WriteLine(json);
+                }
+            }
+            catch (Exception ex)
+            {
+                TratamentoController.Mensagem(ex);
             }
         }
         public Mascote CarregarDadosMascote()
         {
-            string caminhoArquivo = "DadosMascote.json";
-            Mascote mascote = this;
-            using (StreamReader fluxoJson = new StreamReader(caminhoArquivo))
+            try
             {
-                mascote = JsonConvert.DeserializeObject<Mascote>(fluxoJson.ReadLine());
+                string caminhoArquivo = "DadosMascote.json";
+                Mascote mascote = this;
+                using (StreamReader fluxoJson = new StreamReader(caminhoArquivo))
+                {
+                    mascote = JsonConvert.DeserializeObject<Mascote>(fluxoJson.ReadLine());
+                }
+                return mascote;
+
             }
-            return mascote;
+            catch (Exception ex)
+            {
+                TratamentoController.Mensagem(ex);
+                return null;
+            }
         }
 
+        public bool ValidarDadosSalvos()
+        {
+            try
+            {
+                Mascote _mascote = CarregarDadosMascote();
+                if (_mascote is null )
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

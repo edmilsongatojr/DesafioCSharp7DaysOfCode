@@ -14,7 +14,7 @@ namespace DesafioCSharp7DaysOfCode.Views
         }
         private static string TrataOpcaoMenuInicial(bool interacao, string opcao)
         {
-            if (interacao)
+            if (interacao && !opcao.Equals("0"))
             {
                 opcao = (Convert.ToInt32(opcao) + 1).ToString();
             }
@@ -25,5 +25,6 @@ namespace DesafioCSharp7DaysOfCode.Views
             Console.WriteLine("Saindo do jogo Tamaggtchi...");
 
         }
+
     }
 }

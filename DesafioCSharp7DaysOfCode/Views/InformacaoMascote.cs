@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesafioCSharp7DaysOfCode.Controllers;
+using System;
 
 namespace DesafioCSharp7DaysOfCode.Views
 {
@@ -6,51 +7,72 @@ namespace DesafioCSharp7DaysOfCode.Views
     {
         public static void InformacaoesMascoteAdotado()
         {
-            Banner();
-            Console.WriteLine($"Nome do Mascote: {mascote.Nome}");
-            CarregaNaTelaDadosMascote();
-            Banner();
-            MenuPrincipal();
+            try
+            {
+                Banner();
+                Console.WriteLine($"Nome do Mascote: {mascote.Nome}");
+                CarregaNaTelaDadosMascote();
+            }
+            catch (Exception ex)
+            {
+                TratamentoController.Mensagem(ex);
+            }
+            finally
+            {
+                Banner();
+                MenuPrincipal();
+            }
 
         }
         private static void CarregaNaTelaDadosMascote()
         {
-            Console.WriteLine($"    Especie: {mascote.Name.ToUpper()}");
-            Console.WriteLine($"    Idade: {mascote.Idade}");
-            Console.WriteLine($"        ID: {mascote.Id}");
-            Console.WriteLine($"        Alimentação:");
-
-            int countAlimento = 1;
-            foreach (var alimento in mascote.Alimentacao)
+            try
             {
-                Console.WriteLine($"            {countAlimento} - {alimento}");
-                countAlimento++;
+                Console.WriteLine($"    Especie: {mascote.Name.ToUpper()}");
+                Console.WriteLine($"    Idade: {mascote.Idade}");
+                Console.WriteLine($"        ID: {mascote.Id}");
+                Console.WriteLine($"        Alimentação:");
+
+                int countAlimento = 1;
+                foreach (var alimento in mascote.Alimentacao)
+                {
+                    Console.WriteLine($"            {countAlimento} - {alimento}");
+                    countAlimento++;
+                }
+
+                Console.WriteLine($"        Status de Saude: {mascote.StatusSaude}");
+                Console.WriteLine($"        Altura: {mascote.Height}");
+                Console.WriteLine($"        Peso: {mascote.Weight}");
+                Console.WriteLine($"        Habilidades:");
+
+                int countHabilidade = 1;
+                foreach (var habilidade in mascote.Abilities)
+                {
+                    Console.WriteLine($"            Habilidade {countHabilidade}: {habilidade.Ability.Name.ToUpper()}");
+                    countHabilidade++;
+                }
+                Console.WriteLine(GeraConteudo('_', 120));
+                Console.WriteLine("Pressione qualquer tecla para retornar ao Menu Principal...");
+                Console.ReadKey();
             }
-
-            Console.WriteLine($"        Status de Saude: {mascote.StatusSaude}");
-            Console.WriteLine($"        Altura: {mascote.Height}");
-            Console.WriteLine($"        Peso: {mascote.Weight}");
-            Console.WriteLine($"        Habilidades:");
-
-            int countHabilidade = 1;
-            foreach (var habilidade in mascote.Abilities)
+            catch (Exception ex)
             {
-                Console.WriteLine($"            Habilidade {countHabilidade}: {habilidade.Ability.Name.ToUpper()}");
-                countHabilidade++;
+                TratamentoController.Mensagem(ex);
             }
-            Console.WriteLine(GeraConteudo('_', 120));
-            Console.WriteLine("Pressione qualquer tecla para retornar ao Menu Principal...");
-            Console.ReadKey();
         }
-
         private static void VisualizadorDeStatus()
         {
-
-            Console.WriteLine();
-            Console.WriteLine($" [ Nome: {mascote.Nome} ] | [ Idade: {mascote.Idade} ] | [ Especie: {mascote.Especie} ]");
-            Console.WriteLine($" [ Energia: {mascote.StatusEnergia} ] | [ Saude: {mascote.StatusSaude} ] | [ Fome: {mascote.StatusFome} ] | [ Humor: {mascote.StatusHumor} ]");
-            Console.WriteLine();
-
+            try
+            {
+                Console.WriteLine();
+                Console.WriteLine($" [ Nome: {mascote.Nome} ] | [ Idade: {mascote.Idade} ] | [ Especie: {mascote.Especie} ]");
+                Console.WriteLine($" [ Energia: {mascote.StatusEnergia} ] | [ Saude: {mascote.StatusSaude} ] | [ Fome: {mascote.StatusFome} ] | [ Humor: {mascote.StatusHumor} ]");
+                Console.WriteLine();
+            }
+            catch (Exception ex)
+            {
+                TratamentoController.Mensagem(ex);
+            }
         }
     }
 }
